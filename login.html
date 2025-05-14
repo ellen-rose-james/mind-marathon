@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Quiz Registration</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!--No Cache-->
+  <meta
+    http-equiv="Cache-Control"
+    content="no-cache, no-store, must-revalidate"
+  />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <link
+    rel="stylesheet"
+    type="text/css"
+    media="screen"
+    href="./assets/css/form.css?v=1.0"
+  />
+</head>
+
+<body>
+  <div class="form-container">
+    <h2>Register for the Quiz</h2>
+    <form onsubmit="handleSubmit(event)">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Email ID</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
+
+      <a href="index.html"><button type="button">Start Quiz</button></a>
+    </form>
+  </div>
+
+  <script src="./assets/js/form.js?v=1.0"></script>
+</body>
+</html>
