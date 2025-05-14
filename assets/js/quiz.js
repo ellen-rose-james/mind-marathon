@@ -446,6 +446,14 @@ function checkAnswer(index) {
 
   if (isCorrect) {
     message.innerText = "Correct!";
+
+    // Increment the correctAnswers count in localStorage
+    let correctAnswers = parseInt(
+      localStorage.getItem("correctAnswers") || "0"
+    );
+    correctAnswers++;
+    localStorage.setItem("correctAnswers", correctAnswers);
+
     if (currentQuestionIndex < questions.length - 1) {
       currentPassword = generatePassword();
       document.getElementById("generatedPassword").innerText = currentPassword;
@@ -504,20 +512,10 @@ function endQuiz() {
   // Stop the timer
   clearInterval(timerInterval);
 
-  // Calculate the number of correct answers
-  const correctAnswers = questions
-    .slice(0, currentQuestionIndex)
-    .filter((q, i) => {
-      const selected = document.querySelector(`input[name="ans${i}"]:checked`);
-      return selected && selected.value === q.answer;
-    }).length;
-
-  // Store the result in localStorage
-  localStorage.setItem("correctAnswers", correctAnswers);
-
   // Redirect to finish.html
   window.location.href = "finish.html";
 }
 
 // Initialize first question
 renderQuestion(currentQuestionIndex);
+
