@@ -1,26 +1,33 @@
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background: #f5f7fa;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  font-family: "Archivo", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  background-color: #02a6ff83;
+  color: #000;
   margin: 0;
+  display: grid;
+  align-content: center;
+  justify-self: center;
+  padding: 30px;
+  height: 90vh;
 }
 
 .form-container {
-  background: white;
-  padding: 40px 30px;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 400px;
+  padding: 30px;
+  background-color: #fff;
+  border: 2px solid #000;
+  box-shadow: 4px 6px;
+  border-radius: 27px;
+  max-width: 700px;
+  text-align: flex-start;
+  margin: 0 auto;
 }
 
-h2 {
-  text-align: center;
-  margin-bottom: 30px;
-  color: #333;
+h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
 }
 
 label {
@@ -33,26 +40,38 @@ label {
 input[type="text"],
 input[type="email"],
 input[type="tel"] {
-  width: 100%;
+  width: 90%; /* Reduce width slightly to add equal spacing on both sides */
   padding: 10px 12px;
-  margin-bottom: 20px;
+  margin: 10px auto; /* Center the input fields */
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 16px;
+  display: block; /* Ensure inputs are block-level elements */
 }
 
-input[type="submit"] {
-  width: 100%;
-  padding: 12px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 6px;
+button {
+  margin: 10px 0;
+  background-color: #008000;
+  color: #fff;
+  border: 2px solid #000;
+  border-radius: 27px;
+  padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 4px 4px 0 #000;
 }
 
-input[type="submit"]:hover {
-  background-color: #45a049;
+button:hover {
+  transform: translateY(-3px);
+  border: 2px solid #000;
+  border-radius: 27px;
+  box-shadow: 6px 6px 0 #000;
+}
+
+button:active {
+  transform: translateY(0);
+  border: 2px solid #000;
+  border-radius: 27px;
+  box-shadow: 6px 6px 0 #000;
 }
