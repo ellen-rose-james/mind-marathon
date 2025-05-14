@@ -416,13 +416,6 @@ let currentPassword = "";
 
 const quizContainer = document.getElementById("quizContainer");
 
-function generatePassword(length = 5) {
-  const chars =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  return Array.from({ length }, () =>
-    chars.charAt(Math.floor(Math.random() * chars.length))
-  ).join("");
-}
 
 function renderQuestion(index) {
   const q = questions[index];
@@ -447,13 +440,16 @@ function checkAnswer(index) {
   if (isCorrect) {
     message.innerText = "Correct!";
 
+    // Store the correct answer for unlocking the next question
+    currentPassword = questions[index].answer;
+
     if (currentQuestionIndex < questions.length - 1) {
-      currentPassword = generatePassword();
-      document.getElementById("generatedPassword").innerText = currentPassword;
       document.getElementById("passwordSection").classList.remove("hidden");
+      document.getElementById("passwordMsg").innerText = "";
+      document.getElementById("enteredPassword").value = "";
     } else {
       // Last question answered correctly
-      quizContainer.innerHTML = `<h3 style="color: green;">🎉 Congratulations! You have successfully completed the quiz! <P>Well done on your effort and knowledge.</p>
+      quizContainer.innerHTML = `<h3 style="color: green;">🎉 Congratulations! You have successfully completed the quiz! <p>Well done on your effort and knowledge.</p>
 <p>Keep learning and exploring new challenges! 🚀</p>
 </h3>`;
       clearInterval(timerInterval); // Stop the timer
@@ -470,7 +466,6 @@ function checkPassword() {
     currentQuestionIndex++;
     document.getElementById("passwordSection").classList.add("hidden");
     document.getElementById("passwordMsg").innerText = "";
-    document.getElementById("enteredPassword").value = "";
 
     if (currentQuestionIndex < questions.length) {
       renderQuestion(currentQuestionIndex);

@@ -1,39 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <title>Password Quiz</title>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!--No Cache-->
-  <meta
-    http-equiv="Cache-Control"
-    content="no-cache, no-store, must-revalidate"
-  />
-  <meta http-equiv="Pragma" content="no-cache" />
-  <meta http-equiv="Expires" content="0" />
-  <link
-    rel="stylesheet"
-    type="text/css"
-    media="screen"
-    href="./assets/css/quiz.css?v=1.0"
-  />
-</head>
-<body>
-  <h2>Welcome to the Quiz!</h2>
-  <p>Time Remaining: <span id="timer">03:00</span></p>
+  <head>
+    <meta charset="utf-8" />
+    <title>Password Quiz</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--No Cache-->
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="./assets/css/quiz.css?v=1.0"
+    />
+  </head>
+  <body>
+    <h2>Welcome to the Quiz!</h2>
+    <p>Time Remaining: <span id="timer">03:00</span></p>
 
-  <div id="quizContainer"></div>
+    <div id="quizContainer"></div>
 
-  <!-- Password section -->
-  <div id="passwordSection" class="hidden">
-    <p>Correct! Use this password to unlock the next question:</p>
-    <p><strong id="generatedPassword"></strong></p>
-    <input type="text" id="enteredPassword" placeholder="Enter password">
-    <button onclick="checkPassword()">Unlock Next Question</button>
-    <p id="passwordMsg" style="color: red;"></p>
-  </div>
+    <!-- Password section -->
+    <div id="passwordSection" class="hidden">
+      <p>Correct! Use the correct answer to unlock the next question:</p>
+      <input
+        type="text"
+        id="enteredPassword"
+        placeholder="Enter the correct answer"
+      />
+      <button onclick="checkPassword()">Unlock Next Question</button>
+      <p id="passwordMsg" style="color: red"></p>
+    </div>
 
-  <script src="./assets/js/quiz.js?v=1.0"></script>
-</body>
+    <script src="./assets/js/quiz.js?v=1.0"></script>
+  </body>
 </html>
