@@ -11,14 +11,12 @@ function handleSubmit(event) {
   localStorage.setItem("phone", phone);
 
   // Index Redirect
-  function handleSubmit(event) {
-    event.preventDefault(); 
-    if (name && email && phone) {
-      sessionStorage.setItem('loggedIn', true); 
-      window.location.href = 'index.html';
-    } else {
-      alert("Please fill in all fields.");
-    }
+  if (name && email && phone) {
+    sessionStorage.setItem('loggedIn', true); 
+    window.location.href = 'index.html';
+  } else {
+    alert("Please fill in all fields.");
   }
+
   
 }

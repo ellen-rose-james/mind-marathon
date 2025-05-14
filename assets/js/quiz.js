@@ -1,3 +1,8 @@
+// Redirect to login.html if accessed directly
+if (!sessionStorage.getItem('loggedIn')) {
+  window.location.href = 'login.html';
+}
+
 const allQuestions = [
 { question: "Which measure of central tendency represents the middle value in a sorted dataset?", options: ["Mean", "Median", "Mode", "Range"], answer: "Median" },
 { question: "What does standard deviation measure in a dataset?", options: ["Central tendency", "The spread of data", "The highest value", "The lowest value"], answer: "The spread of data" },
@@ -164,7 +169,3 @@ function endQuiz() {
 // Initialize first question
 renderQuestion(currentQuestionIndex);
 
-// Redirect to login.html if accessed directly
-if (!sessionStorage.getItem('loggedIn')) {
-  window.location.href = 'login.html';
-}
