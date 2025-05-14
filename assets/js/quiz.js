@@ -447,13 +447,6 @@ function checkAnswer(index) {
   if (isCorrect) {
     message.innerText = "Correct!";
 
-    // Increment the correctAnswers count in localStorage
-    let correctAnswers = parseInt(
-      localStorage.getItem("correctAnswers") || "0"
-    );
-    correctAnswers++;
-    localStorage.setItem("correctAnswers", correctAnswers);
-
     if (currentQuestionIndex < questions.length - 1) {
       currentPassword = generatePassword();
       document.getElementById("generatedPassword").innerText = currentPassword;
