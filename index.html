@@ -3,14 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <title>Quiz Instructions</title>
+  <link rel="stylesheet" href="./assets/css/intro.css?v=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
 </head>
 <body>
-  <h2>Quiz Instructions</h2>
-  <p>This quiz contains 5 questions and lasts for 3 minutes.</p>
-  <p>Each question requires a password — which is given after the correct answer of the previous question </p>
-  <p>The first question is given as soon as you start this quiZ </p>
-  <p>If you complete all 5 questions within 3 minutes,A certificate will be emailed to you later by our team, and you will receive a gift upon presenting the success message after completing your quiz.</p>
-  <button onclick="window.location.href='quiz.html'">Start Quiz</button>
+  <div class="header">
+    <h1>Welcome to the Quiz!</h1>
+    <p>Please read the instructions before starting.</p>
+  </div>
+ 
+  <div class="container">
+    
+    <h2>Instructions</h2>
+    <p>The quiz has 5 questions and lasts 3 minutes.</p>
+    <p>You will need to enter the correct answer to unlock the next question.</p>
+    <p>The first question will appear as soon as you start.</p>
+    <p>Complete all 5 questions within 3 minutes to receive a certificate via email and a gift upon presnting the quiz completion window.</p>
+    <button onclick="window.location.href='quiz.html'">Start Quiz</button>
+  </div>
+  
 
   <script src="./assets/js/intro.js?v=1.0"></script>
 </body>
