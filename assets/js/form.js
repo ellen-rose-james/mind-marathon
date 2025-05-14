@@ -5,6 +5,14 @@ function handleSubmit(event) {
   const email = document.getElementById("email").value;
   const phone = document.getElementById("phone").value;
 
+  // Check if the user has failed the quiz
+  if (localStorage.getItem(`failed_${email}`)) {
+    alert(
+      "You are not allowed to retake the quiz as you have previously failed."
+    );
+    return;
+  }
+
   // Store values in localStorage
   localStorage.setItem("username", name);
   localStorage.setItem("email", email);
@@ -12,11 +20,9 @@ function handleSubmit(event) {
 
   // Index Redirect
   if (name && email && phone) {
-    sessionStorage.setItem('loggedIn', true); 
-    window.location.href = 'index.html';
+    sessionStorage.setItem("loggedIn", true);
+    window.location.href = "index.html";
   } else {
     alert("Please fill in all fields.");
   }
-
-  
 }
