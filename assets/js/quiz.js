@@ -1,5 +1,5 @@
 const allQuestions = [
-  { question: "Which measure of central tendency represents the middle value in a sorted dataset?", options: ["Mean", "Median", "Mode", "Range"], answer: "Median" },
+{ question: "Which measure of central tendency represents the middle value in a sorted dataset?", options: ["Mean", "Median", "Mode", "Range"], answer: "Median" },
 { question: "What does standard deviation measure in a dataset?", options: ["Central tendency", "The spread of data", "The highest value", "The lowest value"], answer: "The spread of data" },
 { question: "In probability theory, what is the total probability of all possible outcomes?", options: ["1", "0.5", "0", "It depends on the number of events"], answer: "1" },
 { question: "What type of graph is best for showing frequency distributions?", options: ["Line graph", "Pie chart", "Histogram", "Scatter plot"], answer: "Histogram" },
@@ -163,3 +163,8 @@ function endQuiz() {
 
 // Initialize first question
 renderQuestion(currentQuestionIndex);
+
+// Redirect to login.html if accessed directly
+if (!sessionStorage.getItem('loggedIn')) {
+  window.location.href = 'login.html';
+}

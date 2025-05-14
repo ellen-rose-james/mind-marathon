@@ -10,6 +10,15 @@ function handleSubmit(event) {
   localStorage.setItem("email", email);
   localStorage.setItem("phone", phone);
 
-  // Redirect to instructions page
- 
+  // Index Redirect
+  function handleSubmit(event) {
+    event.preventDefault(); 
+    if (name && email && phone) {
+      sessionStorage.setItem('loggedIn', true); 
+      window.location.href = 'index.html';
+    } else {
+      alert("Please fill in all fields.");
+    }
+  }
+  
 }
