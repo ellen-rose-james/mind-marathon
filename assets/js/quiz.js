@@ -416,7 +416,6 @@ let currentPassword = "";
 
 const quizContainer = document.getElementById("quizContainer");
 
-
 function renderQuestion(index) {
   const q = questions[index];
   let html = `<div id="q${index}">
@@ -444,8 +443,10 @@ function checkAnswer(index) {
     currentPassword = questions[index].answer;
 
     if (currentQuestionIndex < questions.length - 1) {
-      document.getElementById("passwordSection").classList.remove("hidden");
-      document.getElementById("passwordMsg").innerText = "";
+      // Show the modal
+      document.getElementById("modalOverlay").style.display = "block";
+      document.getElementById("passwordModal").style.display = "block";
+      document.getElementById("errorMsg").innerText = "";
       document.getElementById("enteredPassword").value = "";
     } else {
       // Last question answered correctly
@@ -464,8 +465,10 @@ function checkPassword() {
   const entered = document.getElementById("enteredPassword").value.trim();
   if (entered === currentPassword) {
     currentQuestionIndex++;
-    document.getElementById("passwordSection").classList.add("hidden");
-    document.getElementById("passwordMsg").innerText = "";
+
+    // Hide the modal
+    document.getElementById("modalOverlay").style.display = "none";
+    document.getElementById("passwordModal").style.display = "none";
 
     if (currentQuestionIndex < questions.length) {
       renderQuestion(currentQuestionIndex);
@@ -474,7 +477,7 @@ function checkPassword() {
       clearInterval(timerInterval); // Stop the timer
     }
   } else {
-    document.getElementById("passwordMsg").innerText = "Incorrect password!";
+    document.getElementById("errorMsg").innerText = "Incorrect answer!";
   }
 }
 
@@ -506,4 +509,3 @@ function endQuiz() {
 
 // Initialize first question
 renderQuestion(currentQuestionIndex);
-
