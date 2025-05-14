@@ -1,4 +1,3 @@
-// Redirect to login.html if accessed directly
 if (!sessionStorage.getItem("loggedIn")) {
   window.location.href = "login.html";
 }
@@ -502,20 +501,22 @@ const timerInterval = setInterval(() => {
 }, 1000);
 
 function endQuiz() {
-  document
-    .querySelectorAll("input")
-    .forEach((input) => (input.disabled = true));
-  document.querySelectorAll("button").forEach((btn) => (btn.disabled = true));
-  const msg = document.createElement("p");
-  msg.style.color = "red";
-  msg.innerText = "Quiz ended.";
-  quizContainer.appendChild(msg);
+  // Stop the timer
+  clearInterval(timerInterval);
 
-  // Mark user as failed in localStorage
-  const email = localStorage.getItem("email");
-  if (email) {
-    localStorage.setItem(`failed_${email}`, true);
-  }
+  // Calculate the number of correct answers
+  const correctAnswers = questions
+    .slice(0, currentQuestionIndex)
+    .filter((q, i) => {
+      const selected = document.querySelector(`input[name="ans${i}"]:checked`);
+      return selected && selected.value === q.answer;
+    }).length;
+
+  // Store the result in localStorage
+  localStorage.setItem("correctAnswers", correctAnswers);
+
+  // Redirect to finish.html
+  window.location.href = "finish.html";
 }
 
 // Initialize first question

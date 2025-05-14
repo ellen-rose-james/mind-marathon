@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz Finished</title>
+    <style>
+      body {
+        font-family: "Segoe UI", sans-serif;
+        background: #f5f7fa;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      .container {
+        text-align: center;
+        background: white;
+        padding: 40px 30px;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      }
+      h2 {
+        color: #333;
+      }
+      p {
+        color: #555;
+        margin: 20px 0;
+      }
+      a {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+        font-size: 16px;
+      }
+      a:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Thank you for attending the quiz!</h2>
+      <p>You answered <span id="correctAnswers"></span> questions correctly.</p>
+      <a href="login.html">Go back to Login</a>
+    </div>
+    <script>
+      // Retrieve the number of correct answers from localStorage
+      const correctAnswers = localStorage.getItem("correctAnswers") || 0;
+      document.getElementById("correctAnswers").textContent = correctAnswers;
+    </script>
+  </body>
+</html>
