@@ -421,12 +421,23 @@ function renderQuestion(index) {
   let html = `<div id="q${index}">
     <p>${index + 1}. ${q.question}</p>`;
   q.options.forEach((opt, i) => {
-    html += `<label><input type="radio" name="ans${index}" value="${opt}"> ${opt}</label><br>`;
+    html += `<label onclick="selectOption(this, ${index})">
+      <input type="radio" name="ans${index}" value="${opt}"> ${opt}
+    </label><br>`;
   });
   html += `<button onclick="checkAnswer(${index})">Submit</button>
     <p id="msg${index}" style="color: green;"></p>
   </div>`;
   quizContainer.innerHTML = html;
+}
+
+function selectOption(label, index) {
+  // Remove 'selected' class from all labels for the current question
+  const labels = document.querySelectorAll(`#q${index} label`);
+  labels.forEach((lbl) => lbl.classList.remove("selected"));
+
+  // Add 'selected' class to the clicked label
+  label.classList.add("selected");
 }
 
 function checkAnswer(index) {
@@ -454,6 +465,7 @@ function checkAnswer(index) {
 <p>Keep learning and exploring new challenges! 🚀</p>
 </h3>`;
       clearInterval(timerInterval); // Stop the timer
+      endQuiz();
     }
   } else {
     message.innerText = "Wrong answer!";
