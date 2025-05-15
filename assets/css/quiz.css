@@ -1,7 +1,97 @@
-#timer {
+body {
+  font-family: "Archivo", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #02a6ff83;
+  color: #000;
+  margin: 0;
+}
+
+.container {
+  width: 50%;
+  background: #fff;
+  padding: 40px;
+  border: 2px solid #000;
+  box-shadow: 4px 6px;
+  border-radius: 27px;
+  text-align: flex-start;
+  position: relative;
+}
+
+.timer {
+  text-align: right;
   font-weight: bold;
   font-size: 20px;
   color: red;
+}
+
+#quizContainer p {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+label {
+  display: inline-block;
+  width: 90%;
+  margin: 10px 0;
+  padding: 10px;
+  border: 2px solid #000;
+  box-shadow: 4px 4px 0 #000;
+  border-radius: 27px;
+  cursor: pointer;
+  text-align: center;
+  word-wrap: break-word; /* Allow text to wrap to the next line */
+  background-color: white; /* Default background color */
+  transition: background-color 0.3s ease; /* Smooth transition for background changes */
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+label:hover {
+  background-color: #ffbf00; /* Yellow on hover */
+}
+
+label.selected {
+  background-color: #ffbf00; /* Yellow background for selected option */
+}
+
+button {
+  background-color: #008000;
+  color: #fff;
+  border: 2px solid #000;
+  border-radius: 27px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 4px 4px 0 #000; /* Add shadow */
+}
+
+button:hover {
+  transform: translateY(-3px);
+  border: 2px solid #000;
+  border-radius: 27px;
+  box-shadow: 6px 6px 0 #000;
+  
+}
+
+button:active {
+  transform: translateY(0);
+  border: 2px solid #000;
+  border-radius: 27px;
+  box-shadow: 6px 6px 0 #000;
+}
+
+button.submit {
+  float: right;
 }
 
 .hidden {
@@ -9,54 +99,65 @@
 }
 
 /* Styles for the pop-up modal */
-#passwordModal {
+#passwordModal,
+#congratsModal {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: white;
   padding: 20px 30px;
-  border-radius: 10px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  border: 2px solid #000;
+  box-shadow: 4px 6px;
+  border-radius: 27px;
   z-index: 1000;
-  display: none;
 }
 
-#passwordModal p {
+#passwordModal p,
+#congratsModal p {
   margin-bottom: 15px;
   font-size: 16px;
   color: #333;
 }
 
 #passwordModal input {
-  width: 100%;
+  width: 90%;
   padding: 10px;
   margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
 
-#passwordModal button {
+#passwordModal button,
+#congratsModal button {
+  background-color: #008000;
+  color: #fff;
+  border: 2px solid #000;
+  border-radius: 27px;
   padding: 10px 20px;
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  border-radius: 5px;
+  font-size: 16px;
   cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 4px 4px 0 #000; 
 }
 
-#passwordModal button:hover {
-  background-color: #45a049;
+#passwordModal button:hover,
+#congratsModal button:hover {
+  transform: translateY(-3px);
+  border: 2px solid #000;
+  border-radius: 27px;
+  box-shadow: 6px 6px 0 #000;
 }
 
-#passwordModal p#errorMsg {
-  color: red;
-  font-size: 14px;
-  margin-top: 10px;
-  text-align: center;
+#passwordModal button:active,
+#congratsModal button:active {
+  transform: translateY(0);
+  border: 2px solid #000;
+  border-radius: 27px;
+  box-shadow: 6px 6px 0 #000;
 }
 
-/* Overlay for the modal */
+
 #modalOverlay {
   position: fixed;
   top: 0;
@@ -65,5 +166,4 @@
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
   z-index: 999;
-  display: none;
 }
