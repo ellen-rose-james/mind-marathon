@@ -13,14 +13,27 @@ function handleSubmit(event) {
     return;
   }
 
-  // Store values in localStorage
-  localStorage.setItem("username", name);
-  localStorage.setItem("email", email);
-  localStorage.setItem("phone", phone);
+  // Create a user data object
+  const userData = {
+    name,
+    email,
+    phone,
+    timestamp: new Date().toISOString(), // Add a timestamp for when the user logged in
+  };
 
-  // Index Redirect
+  // Retrieve existing users from localStorage
+  const users = JSON.parse(localStorage.getItem("users")) || [];
+  users.push(userData); // Add the new user to the list
+
+  // Save updated users list back to localStorage
+  localStorage.setItem("users", JSON.stringify(users));
+
+  // Store current user session
+  sessionStorage.setItem("loggedIn", true);
+  sessionStorage.setItem("currentUser", JSON.stringify(userData));
+
+  // Redirect to index.html
   if (name && email && phone) {
-    sessionStorage.setItem("loggedIn", true);
     window.location.href = "index.html";
   } else {
     alert("Please fill in all fields.");
