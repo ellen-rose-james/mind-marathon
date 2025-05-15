@@ -447,5 +447,18 @@ function endQuiz() {
   window.location.href = "finish.html";
 }
 
+// Disable page refresh
+window.addEventListener("keydown", function (e) {
+  // Prevent F5 (Refresh)
+  if (e.key === "F5") {
+    e.preventDefault();
+  }
+
+  // Prevent Ctrl+R (or Cmd+R on macOS)
+  if ((e.ctrlKey || e.metaKey) && e.key === "r") {
+    e.preventDefault();
+  }
+});
+
 // Initialize first question
 renderQuestion(currentQuestionIndex);
