@@ -4,84 +4,6 @@ if (!sessionStorage.getItem("loggedIn")) {
 
 const allQuestions = [
   {
-    question:
-      "Which measure of central tendency represents the middle value in a sorted dataset?",
-    options: ["Mean", "Median", "Mode", "Range"],
-    answer: "Median",
-  },
-  {
-    question: "What does standard deviation measure in a dataset?",
-    options: [
-      "Central tendency",
-      "The spread of data",
-      "The highest value",
-      "The lowest value",
-    ],
-    answer: "The spread of data",
-  },
-  {
-    question:
-      "In probability theory, what is the total probability of all possible outcomes?",
-    options: ["1", "0.5", "0", "It depends on the number of events"],
-    answer: "1",
-  },
-  {
-    question: "What type of graph is best for showing frequency distributions?",
-    options: ["Line graph", "Pie chart", "Histogram", "Scatter plot"],
-    answer: "Histogram",
-  },
-  {
-    question:
-      "What is the probability of flipping a fair coin and getting heads?",
-    options: ["1/4", "1/3", "1/2", "3/4"],
-    answer: "1/2",
-  },
-  {
-    question:
-      "Which statistical test is used to compare the means of two independent groups?",
-    options: ["Chi-square test", "ANOVA", "t-test", "Regression analysis"],
-    answer: "t-test",
-  },
-  {
-    question: "What is a p-value in hypothesis testing?",
-    options: [
-      "The probability of rejecting the null hypothesis incorrectly",
-      "The probability of obtaining the observed results assuming the null hypothesis is true",
-      "The median of the dataset",
-      "The range of the dataset",
-    ],
-    answer:
-      "The probability of obtaining the observed results assuming the null hypothesis is true",
-  },
-  {
-    question:
-      "Which term refers to a variable that affects both independent and dependent variables?",
-    options: [
-      "Confounding variable",
-      "Response variable",
-      "Control variable",
-      "Nominal variable",
-    ],
-    answer: "Confounding variable",
-  },
-  {
-    question: "What does a correlation coefficient indicate?",
-    options: [
-      "The strength and direction of a relationship between two variables",
-      "The sample size",
-      "The mean of a dataset",
-      "The probability of an event occurring",
-    ],
-    answer:
-      "The strength and direction of a relationship between two variables",
-  },
-  {
-    question:
-      "If a dataset is skewed to the right, which measure of central tendency is greatest?",
-    options: ["Mean", "Median", "Mode", "Range"],
-    answer: "Mean",
-  },
-  {
     question: "What is the capital of France?",
     options: ["Berlin", "Madrid", "Paris", "Rome"],
     answer: "Paris",
@@ -90,16 +12,6 @@ const allQuestions = [
     question: "Which planet is closest to the sun?",
     options: ["Venus", "Earth", "Mars", "Mercury"],
     answer: "Mercury",
-  },
-  {
-    question: "Who invented the light bulb?",
-    options: [
-      "Nikola Tesla",
-      "Thomas Edison",
-      "Alexander Graham Bell",
-      "Albert Einstein",
-    ],
-    answer: "Thomas Edison",
   },
   {
     question: "What is the largest mammal on Earth?",
@@ -126,11 +38,6 @@ const allQuestions = [
     question: "How many bones does an adult human have?",
     options: ["206", "180", "220", "250"],
     answer: "206",
-  },
-  {
-    question: "What is the chemical symbol for water?",
-    options: ["CO₂", "H₂O", "O₂", "NaCl"],
-    answer: "H₂O",
   },
   {
     question: "Who wrote ‘Harry Potter’?",
@@ -163,11 +70,6 @@ const allQuestions = [
     answer: "E. M. S. Namboodiripad",
   },
   {
-    question: "Which district is known as the “Land of Coconuts”?",
-    options: ["Palakkad", "Alappuzha", "Kozhikode", "Kollam"],
-    answer: "Alappuzha",
-  },
-  {
     question:
       "The famous Onam festival commemorates the return of which legendary king?",
     options: ["Mahabali", "Ravana", "Harishchandra", "Ashoka"],
@@ -177,11 +79,6 @@ const allQuestions = [
     question: "What is the name of Kerala’s classical dance form?",
     options: ["Bharatanatyam", "Kuchipudi", "Kathakali", "Odissi"],
     answer: "Kathakali",
-  },
-  {
-    question: "Which Kerala city is known as the “City of Spices”?",
-    options: ["Thrissur", "Kannur", "Kochi", "Idukki"],
-    answer: "Kochi",
   },
   {
     question: "In which year was Kerala formed as a state?",
@@ -209,13 +106,14 @@ const allQuestions = [
     answer: "Idukki",
   },
   {
-    question: "Which Kerala district had the highest population (Census 2011)?",
+    question:
+      "As per the 2011 Census, which Kerala district had the highest population?",
     options: ["Ernakulam", "Malappuram", "Thiruvananthapuram", "Kollam"],
     answer: "Malappuram",
   },
   {
     question:
-      "Which district had the highest literacy rate in Kerala (Census 2011)?",
+      "Which district had the highest literacy rate in Kerala according to the 2011 Census?",
     options: ["Pathanamthitta", "Kottayam", "Thrissur", "Alappuzha"],
     answer: "Kottayam",
   },
@@ -225,12 +123,14 @@ const allQuestions = [
     answer: "Services",
   },
   {
-    question: "Which is the most urbanized district in Kerala?",
+    question:
+      "Which is the most urbanized district in Kerala (by % urban population)?",
     options: ["Kozhikode", "Ernakulam", "Kannur", "Thiruvananthapuram"],
     answer: "Ernakulam",
   },
   {
-    question: "What is Kerala’s rank in India in terms of HDI?",
+    question:
+      "What is Kerala’s rank in India in terms of Human Development Index (HDI)?",
     options: ["First", "Second", "Third", "Fourth"],
     answer: "First",
   },
@@ -240,30 +140,32 @@ const allQuestions = [
     answer: "Coconut",
   },
   {
-    question: "Which district receives the highest remittance inflow?",
+    question:
+      "As per the Economic Review, which district receives the highest remittance inflow?",
     options: ["Kottayam", "Malappuram", "Thrissur", "Pathanamthitta"],
     answer: "Malappuram",
   },
   {
-    question: "What is the infant mortality rate (IMR) in Kerala?",
-    options: ["20", "12", "7", "4"],
-    answer: "4",
-  },
-  {
-    question: "Which Kerala district has the highest sex ratio (Census 2011)?",
-    options: ["Kannur", "Alappuzha", "Pathanamthitta", "Kozhikode"],
-    answer: "Pathanamthitta",
+    question:
+      "What is the approximate infant mortality rate (IMR) in Kerala (as per recent DES data)?",
+    options: [
+      "20 per 1000 live births",
+      "12 per 1000 live births",
+      "7 per 1000 live births",
+      "4 per 1000 live births",
+    ],
+    answer: "7 per 1000 live births",
   },
   {
     question:
-      "Which department is responsible for statistical data collection in Kerala?",
+      "Which department is primarily responsible for statistical data collection in Kerala?",
     options: [
       "Planning Board",
-      "DES",
+      "DES (Department of Economics & Statistics)",
       "Revenue Department",
       "Local Self Government",
     ],
-    answer: "DES",
+    answer: "DES (Department of Economics & Statistics)",
   },
   {
     question: "What is the hardest natural substance on Earth?",
@@ -291,7 +193,7 @@ const allQuestions = [
     answer: "Leonardo da Vinci",
   },
   {
-    question: "Who developed the theory of relativity?",
+    question: "Which famous scientist developed the theory of relativity?",
     options: [
       "Isaac Newton",
       "Albert Einstein",
@@ -336,7 +238,7 @@ const allQuestions = [
     answer: "A. P. J. Abdul Kalam",
   },
   {
-    question: "Who is known as the “Father of Statistics”?",
+    question: "Who is known as the “Father of Indian Statistics”?",
     options: [
       "Karl Pearson",
       "Ronald Fisher",
@@ -346,7 +248,7 @@ const allQuestions = [
     answer: "P.C. Mahalanobis",
   },
   {
-    question: "What is the full form of NSSO?",
+    question: "What is the full form of NSSO in India?",
     options: [
       "National Statistical Service Organization",
       "National Survey and Statistics Office",
@@ -357,7 +259,7 @@ const allQuestions = [
   },
   {
     question:
-      "Which age group in India is considered the working-age population?",
+      "Which age group in India is considered as the working-age population?",
     options: ["0-14 years", "15-59 years", "60+ years", "18-45 years"],
     answer: "15-59 years",
   },
@@ -382,17 +284,6 @@ const allQuestions = [
     answer: "Every 10 years",
   },
   {
-    question: "Which Census year marked India’s population crossing 1 billion?",
-    options: ["1991", "2001", "2011", "1981"],
-    answer: "2001",
-  },
-  {
-    question:
-      "What is the Child Sex Ratio (0–6 years) in India as per Census 2011?",
-    options: ["927", "914", "940", "900"],
-    answer: "914",
-  },
-  {
     question: "Which is the least densely populated state in India?",
     options: ["Mizoram", "Arunachal Pradesh", "Sikkim", "Nagaland"],
     answer: "Arunachal Pradesh",
@@ -402,6 +293,43 @@ const allQuestions = [
       "Which city has the highest population density among Indian metros?",
     options: ["Delhi", "Mumbai", "Kolkata", "Chennai"],
     answer: "Mumbai",
+  },
+  {
+    question: "Who is considered the father of modern statistics?",
+    options: ["Karl Pearson", "Ronald Fisher", "John Tukey", "Francis Galton"],
+    answer: "Ronald Fisher",
+  },
+  {
+    question:
+      "Which country first introduced probability theory as a formal discipline?",
+    options: ["Germany", "France", "England", "Italy"],
+    answer: "France",
+  },
+  {
+    question:
+      "Which statistical graph is commonly used to display the distribution of a dataset?",
+    options: ["Pie Chart", "Histogram", "Scatter Plot", "Line Graph"],
+    answer: "Histogram",
+  },
+  {
+    question: "Who developed the concept of probability in mathematics?",
+    options: [
+      "Blaise Pascal",
+      "Carl Friedrich Gauss",
+      "Pierre-Simon Laplace",
+      "Thomas Bayes",
+    ],
+    answer: "Blaise Pascal",
+  },
+  {
+    question: "How many continents are there in the world?",
+    options: ["Five", "Six", "Seven", "Eight"],
+    answer: "Seven",
+  },
+  {
+    question: "Which is the largest animal in the world?",
+    options: ["Elephant", "Blue Whale", "Giraffe", "Hippopotamus"],
+    answer: "Blue Whale",
   },
 ];
 
