@@ -40,6 +40,10 @@ app.options("/submit", (req, res) => {
   res.sendStatus(204);
 });
 
+app.get("/", (req, res) => {
+  res.send("Proxy server is running!");
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Proxy server running on port ${PORT}`);
