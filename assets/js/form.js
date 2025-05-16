@@ -44,5 +44,4 @@ async function handleSubmit(event) {
     console.error("Error submitting to Google Sheets:", error);
     alert("Something went wrong while submitting your data.");
   }
-  
 }
