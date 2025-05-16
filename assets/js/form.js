@@ -28,7 +28,7 @@ async function handleSubmit(event) {
   data.append("phone", phone);
 
   try {
-    await fetch("https://script.google.com/macros/s/AKfycbxuCwdzo-2_dhR1UZf5RGml6IQTi2sPCjMjUrlQMSYDZ9ZJAT7k4DFGL28rSi5udp02/exec", {
+    await fetch("https://script.google.com/macros/s/AKfycbxSbgUPMMZ90YDGDBK9FoDTbtFekfmd_sfP1VFiizs3xDbqLJqLCZbdv6SKfpqSlGVM/exec", {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded"
