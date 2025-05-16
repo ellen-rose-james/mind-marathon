@@ -28,7 +28,7 @@ async function handleSubmit(event) {
   data.append("phone", phone);
 
   try {
-    await fetch("https://google-script-proxy-eijja29cz-ellen-rose-james-projects.vercel.app/submit", {
+    await fetch("https://google-script-proxy-a1eqcfzn0-ellen-rose-james-projects.vercel.app/submit", {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded"
