@@ -1,10 +1,15 @@
 {
   "version": 2,
   "builds": [
-    { "src": "index.js", "use": "@vercel/node" }
+    {
+      "src": "api/submit.js",
+      "use": "@vercel/node"
+    }
   ],
   "routes": [
-    { "src": "/submit", "dest": "/index.js" },
-    { "src": "/", "dest": "/index.js" }
+    {
+      "src": "/submit",
+      "dest": "/api/submit.js"
+    }
   ]
 }
