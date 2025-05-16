@@ -1,18 +1,15 @@
-async function handleSubmit(event) {
+function handleSubmit(event) {
   event.preventDefault();
 
-  const name = document.getElementById("name").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const phone = document.getElementById("phone").value.trim();
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const phone = document.getElementById("phone").value;
 
   // Check if the user has failed the quiz
   if (localStorage.getItem(`failed_${email}`)) {
-    alert("You are not allowed to retake the quiz as you have previously failed.");
-    return;
-  }
-
-  if (!name || !email || !phone) {
-    alert("Please fill in all fields.");
+    alert(
+      "You are not allowed to retake the quiz as you have previously failed."
+    );
     return;
   }
 
@@ -21,27 +18,11 @@ async function handleSubmit(event) {
   localStorage.setItem("email", email);
   localStorage.setItem("phone", phone);
 
-  // Prepare data
-  const data = new URLSearchParams();
-  data.append("name", name);
-  data.append("email", email);
-  data.append("phone", phone);
-
-  try {
-    await fetch("https://google-script-proxy-5peyxke39-ellen-rose-james-projects.vercel.app/api/submit", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      body: data.toString(),
-    });
-    
+  // Index Redirect
+  if (name && email && phone) {
     sessionStorage.setItem("loggedIn", true);
     window.location.href = "index.html";
-    
-  
-  } catch (error) {
-    console.error("Error submitting to Google Sheets:", error);
-    alert("Something went wrong while submitting your data.");
+  } else {
+    alert("Please fill in all fields.");
   }
 }
