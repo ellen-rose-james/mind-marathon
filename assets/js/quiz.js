@@ -413,7 +413,7 @@ function checkPassword() {
     if (currentQuestionIndex < questions.length) {
       renderQuestion(currentQuestionIndex);
     } else {
-      quizContainer.innerHTML = `<h3 style="color: green;">🎉 Congratulations! You have completed the quiz successfully!</h3>`;
+      quizContainer.innerHTML = `<h3 style="color: green;">🎉 Congratulations! You have successfully completed Mind Marathon!</h3>`;
       clearInterval(timerInterval); // Stop the timer
     }
   } else {
