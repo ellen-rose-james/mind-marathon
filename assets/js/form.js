@@ -28,13 +28,14 @@ async function handleSubmit(event) {
   data.append("phone", phone);
 
   try {
-    await fetch("https://script.google.com/macros/s/AKfycbxSbgUPMMZ90YDGDBK9FoDTbtFekfmd_sfP1VFiizs3xDbqLJqLCZbdv6SKfpqSlGVM/exec", {
+    await fetch("https://google-script-proxy-eijja29cz-ellen-rose-james-projects.vercel.app/submit", {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
       body: data.toString(),
     });
+    
     sessionStorage.setItem("loggedIn", true);
     window.location.href = "index.html";
     
