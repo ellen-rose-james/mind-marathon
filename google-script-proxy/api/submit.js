@@ -1,8 +1,7 @@
-// api/submit.js
-
 const fetch = require("node-fetch");
 
 module.exports = async (req, res) => {
+  // CORS Preflight
   if (req.method === "OPTIONS") {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
@@ -12,19 +11,19 @@ module.exports = async (req, res) => {
 
   if (req.method === "POST") {
     try {
-      const body = [];
-
+      let body = "";
       req.on("data", chunk => {
-        body.push(chunk);
+        body += chunk.toString();
       });
 
       req.on("end", async () => {
-        const parsedBody = Buffer.concat(body).toString();
-        const params = new URLSearchParams(parsedBody);
+        const params = new URLSearchParams(body);
 
         const response = await fetch("https://script.google.com/macros/s/AKfycbxSbgUPMMZ90YDGDBK9FoDTbtFekfmd_sfP1VFiizs3xDbqLJqLCZbdv6SKfpqSlGVM/exec", {
           method: "POST",
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
           body: params
         });
 
@@ -35,8 +34,8 @@ module.exports = async (req, res) => {
         res.setHeader("Access-Control-Allow-Headers", "Content-Type");
         return res.status(200).send(text);
       });
-    } catch (err) {
-      console.error(err);
+    } catch (error) {
+      console.error("Server error:", error);
       return res.status(500).send("Internal Server Error");
     }
   } else {
