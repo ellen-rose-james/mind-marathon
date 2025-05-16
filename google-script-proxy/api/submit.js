@@ -1,37 +1,43 @@
 const fetch = require("node-fetch");
 
 module.exports = async (req, res) => {
-  // CORS Preflight
+  // Always set these headers
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+
+  // Handle preflight (OPTIONS) request
   if (req.method === "OPTIONS") {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
-    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
     return res.status(204).end();
   }
 
   if (req.method === "POST") {
     try {
-      const params = new URLSearchParams(req.body);
-
-      const response = await fetch("https://script.google.com/macros/s/AKfycbxSbgUPMMZ90YDGDBK9FoDTbtFekfmd_sfP1VFiizs3xDbqLJqLCZbdv6SKfpqSlGVM/exec", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        },
-        body: params
+      let body = "";
+      req.on("data", chunk => {
+        body += chunk.toString();
       });
 
-      const text = await response.text();
+      req.on("end", async () => {
+        const params = new URLSearchParams(body);
 
-      res.setHeader("Access-Control-Allow-Origin", "*");
-      res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
-      res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-      return res.status(200).send(text);
+        const response = await fetch("https://script.google.com/macros/s/AKfycbxSbgUPMMZ90YDGDBK9FoDTbtFekfmd_sfP1VFiizs3xDbqLJqLCZbdv6SKfpqSlGVM/exec", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          body: params
+        });
+
+        const text = await response.text();
+
+        return res.status(200).send(text);
+      });
     } catch (error) {
       console.error("Server error:", error);
       return res.status(500).send("Internal Server Error");
     }
   } else {
-    res.status(405).send("Method Not Allowed");
+    return res.status(405).send("Method Not Allowed");
   }
 };
