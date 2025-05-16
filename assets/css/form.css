@@ -75,3 +75,7 @@ button:active {
   border-radius: 27px;
   box-shadow: 6px 6px 0 #000;
 }
+
+.footer{
+  font-size: 5px;
+}
