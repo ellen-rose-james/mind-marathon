@@ -5,31 +5,24 @@ function handleSubmit(event) {
   const email = document.getElementById("email").value;
   const phone = document.getElementById("phone").value;
 
-  const userData = { name, email, phone };
+  // Check if the user has failed the quiz
+  if (localStorage.getItem(`failed_${email}`)) {
+    alert(
+      "You are not allowed to retake the quiz as you have previously failed."
+    );
+    return;
+  }
 
-  // Send data to the backend
-  fetch("http://localhost:5000/api/users", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(userData),
-  })
-    .then((response) => {
-      if (!response.ok) {
-        return response.json().then((data) => {
-          throw new Error(data.message);
-        });
-      }
-      return response.json();
-    })
-    .then((data) => {
-      alert(data.message);
-      sessionStorage.setItem("loggedIn", true);
-      sessionStorage.setItem("currentUser", JSON.stringify(userData));
-      window.location.href = "index.html";
-    })
-    .catch((error) => {
-      alert(error.message); // Show error message if the user is already logged in
-    });
+  // Store values in localStorage
+  localStorage.setItem("username", name);
+  localStorage.setItem("email", email);
+  localStorage.setItem("phone", phone);
+
+  // Index Redirect
+  if (name && email && phone) {
+    sessionStorage.setItem("loggedIn", true);
+    window.location.href = "index.html";
+  } else {
+    alert("Please fill in all fields.");
+  }
 }
