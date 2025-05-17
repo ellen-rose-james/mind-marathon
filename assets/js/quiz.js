@@ -141,12 +141,6 @@ const allQuestions = [
   },
   {
     question:
-      "As per the Economic Review, which district receives the highest remittance inflow?",
-    options: ["Kottayam", "Malappuram", "Thrissur", "Pathanamthitta"],
-    answer: "Malappuram",
-  },
-  {
-    question:
       "What is the approximate infant mortality rate (IMR) in Kerala (as per recent DES data)?",
     options: [
       "20 per 1000 live births",
@@ -246,16 +240,6 @@ const allQuestions = [
       "Francis Galton",
     ],
     answer: "P.C. Mahalanobis",
-  },
-  {
-    question: "What is the full form of NSSO in India?",
-    options: [
-      "National Statistical Service Organization",
-      "National Survey and Statistics Office",
-      "National Sample Survey Office",
-      "National Statistics and Standards Office",
-    ],
-    answer: "National Sample Survey Office",
   },
   {
     question:

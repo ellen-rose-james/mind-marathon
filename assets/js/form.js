@@ -13,6 +13,12 @@ function handleSubmit(event) {
     return;
   }
 
+  // Check if the user has already logged in before
+  if (localStorage.getItem(`loggedIn_${email}`)) {
+    alert("You have already logged in once. You cannot log in again.");
+    return;
+  }
+
   // Store values in localStorage
   localStorage.setItem("username", name);
   localStorage.setItem("email", email);
@@ -21,6 +27,8 @@ function handleSubmit(event) {
   // Index Redirect
   if (name && email && phone) {
     sessionStorage.setItem("loggedIn", true);
+    // Set a flag so this user can't log in again
+    localStorage.setItem(`loggedIn_${email}`, true);
     window.location.href = "index.html";
   } else {
     alert("Please fill in all fields.");
