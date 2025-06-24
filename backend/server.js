@@ -44,6 +44,13 @@ app.post("/users", (req, res) => {
   );
 });
 
+app.get("/users", (req, res) => {
+  db.query("SELECT * FROM users", (err, results) => {
+    if (res.length == 0) return res.status(404).json({ error: "No users found" });
+    res.status(200).json(results);
+  });
+});
+
 app.listen(3000, () => {
   console.log("Server is running on port 3000");
 });
