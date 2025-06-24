@@ -1,9 +1,19 @@
 function handleSubmit(event) {
   event.preventDefault();
 
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const phone = document.getElementById("phone").value;
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+
+  // Basic validation
+  if (!name || !email || !phone) {
+    alert("Please fill in all fields.");
+    return;
+  }
+  if (!/^[0-9]{10}$/.test(phone)) {
+    alert("Please enter a valid 10-digit phone number.");
+    return;
+  }
 
   // Check if the user has failed the quiz
   if (localStorage.getItem(`failed_${email}`)) {
@@ -19,18 +29,28 @@ function handleSubmit(event) {
     return;
   }
 
-  // Store values in localStorage
-  localStorage.setItem("username", name);
-  localStorage.setItem("email", email);
-  localStorage.setItem("phone", phone);
-
-  // Index Redirect
-  if (name && email && phone) {
-    sessionStorage.setItem("loggedIn", true);
-    // Set a flag so this user can't log in again
-    localStorage.setItem(`loggedIn_${email}`, true);
-    window.location.href = "index.html";
-  } else {
-    alert("Please fill in all fields.");
-  }
+  fetch("http://localhost:3000/users", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name, email, phone }),
+  })
+    .then((response) =>
+      response.json().then((data) => ({ status: response.status, data }))
+    )
+    .then(({ status, data }) => {
+      if (status === 201) {
+        // Success: proceed
+        localStorage.setItem("username", name);
+        localStorage.setItem("email", email);
+        localStorage.setItem("phone", phone);
+        sessionStorage.setItem("loggedIn", true);
+        window.location.href = "index.html";
+      } else {
+        // Error: show message
+        alert(data.error || "Registration failed.");
+      }
+    })
+    .catch(() => {
+      alert("Server error. Please try again later.");
+    });
 }
