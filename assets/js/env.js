@@ -1,1 +1,0 @@
-const BACKEND_URL = 'https://mind-marathon-backend-production.up.railway.app';
