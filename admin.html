@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Panel - Mind Marathon</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 2rem; }
+    .hidden { display: none; }
+    table { border-collapse: collapse; width: 100%; margin-top: 1rem; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+  </style>
+</head>
+<body>
+  <h1>Admin Panel</h1>
+  <div id="loginDiv">
+    <input type="email" id="adminEmail" placeholder="Email"><br><br>
+    <input type="password" id="adminPassword" placeholder="Password"><br><br>
+    <button onclick="login()">Login</button>
+  </div>
+
+  <div id="adminSection" class="hidden">
+    <p>Logged in as: <span id="adminName"></span> <button onclick="logout()">Logout</button></p>
+    <h2>Registered Users</h2>
+    <table id="userTable">
+      <thead>
+        <tr><th>Name</th><th>Email</th><th>Phone</th><th>Visit Count</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"></script>
+
+  <!-- Firebase Config -->
+  <script src="assets/js/firebase.js"></script>
+
+  <!-- Admin Panel Script -->
+  <script>
+    const allowedAdmins = ["ellenrj03@gmail.com"]; // Add more emails if needed
+
+    const auth = firebase.auth();
+    const db = window.db;
+
+    function login() {
+      const email = document.getElementById("adminEmail").value;
+      const password = document.getElementById("adminPassword").value;
+
+      auth.signInWithEmailAndPassword(email, password)
+        .then(userCredential => {
+          const user = userCredential.user;
+          if (!allowedAdmins.includes(user.email)) {
+            alert("Access denied: You are not an admin.");
+            auth.signOut();
+            return;
+          }
+          document.getElementById("adminName").textContent = user.email;
+          document.getElementById("loginDiv").classList.add("hidden");
+          document.getElementById("adminSection").classList.remove("hidden");
+          fetchUsers();
+        })
+        .catch(error => {
+          console.error(error);
+          alert("Login failed. Check credentials.");
+        });
+    }
+
+    function logout() {
+      auth.signOut().then(() => {
+        window.location.reload();
+      });
+    }
+
+    function fetchUsers() {
+      db.collection("users").get().then(snapshot => {
+        const tbody = document.querySelector("#userTable tbody");
+        tbody.innerHTML = "";
+        snapshot.forEach(doc => {
+          const data = doc.data();
+          const row = `<tr>
+            <td>${data.name}</td>
+            <td>${data.email}</td>
+            <td>${data.phone}</td>
+            <td>${data.visitcount}</td>
+          </tr>`;
+          tbody.innerHTML += row;
+        });
+      });
+    }
+  </script>
+</body>
+</html>
