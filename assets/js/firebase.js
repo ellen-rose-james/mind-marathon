@@ -1,4 +1,3 @@
-
 const firebaseConfig = {
   apiKey: "AIzaSyB6JEG5j9tb6XbKhT0E5wxXYSphNvpRPJw",
   authDomain: "mind-marathon-db.firebaseapp.com",
@@ -8,8 +7,9 @@ const firebaseConfig = {
   appId: "1:158031876314:web:7c212dd486416992b055e3"
 };
 
+// Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-
+// Expose db and auth globally
 window.db = firebase.firestore();
 window.auth = firebase.auth();

@@ -1,4 +1,5 @@
 const db = window.db;
+console.log("🚀 db:", db);
 
 async function handleSubmit(event) {
   event.preventDefault();
@@ -53,8 +54,8 @@ async function handleSubmit(event) {
     window.location.href = "index.html";
 
   } catch (error) {
-    console.error(error);
-    alert("Server error. Please try again later.");
-  }
+  console.error("🔥 Firestore write failed:", error);
+  alert("Server error. Please try again later.");
+}
 }
 
