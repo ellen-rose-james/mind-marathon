@@ -29,7 +29,7 @@ function handleSubmit(event) {
     return;
   }
 
-  fetch("http://localhost:3000/users", {
+  fetch("BACKEND_URL/users", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ name, email, phone }),
